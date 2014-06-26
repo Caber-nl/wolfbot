@@ -1,9 +1,9 @@
 PASS = "my_nickserv_pass"
-CHANNEL = "#mywolfgame"
-HOST = "irc.freenode.net"
+CHANNEL = "#wolf"
+HOST = "chat.eu.scoutlink.net"
 PORT = 6667
 USERNAME = ""  # for authentication, can be left blank if same as NICK
-NICK = "mywolfbot"
+NICK = "WolfBot"
 CMD_CHAR = "!"
 CHANGING_HOST_QUIT_MESSAGE = "Changing host"
 
