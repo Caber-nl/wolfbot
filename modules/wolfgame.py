@@ -1942,6 +1942,7 @@ def see(cli, nick, rest):
     pm(cli, nick, ("You have a vision; in this vision, "+
                     "you see that \u0002{0}\u0002 is a "+
                     "\u0002{1}\u0002!").format(victim, role))
+        cli.msg(botconfig.CHANNEL, "An aurora shines over the village. Maybe the seer knows what the gods try to say.")
     var.SEEN.append(nick)
     var.LOGGER.logBare(victim, "SEEN", nick)
     chk_nightdone(cli)
@@ -2058,7 +2059,6 @@ def transition_night(cli):
     for wolf in wolves:
         normal_notify = wolf in var.PLAYERS and var.PLAYERS[wolf]["cloak"] not in var.SIMPLE_NOTIFY
     
-        if normal_notify:
             if wolf in var.ROLES["wolf"]:
                 pm(cli, wolf, ('You are a \u0002wolf\u0002. It is your job to kill all the '+
                                'villagers. Use "kill <nick>" to kill a villager.'))
@@ -2073,9 +2073,7 @@ def transition_night(cli):
                                'Observing will prevent you from participating in a killing.'))
             if len(wolves) > 1:
                 pm(cli, wolf, 'Also, if you PM me, your message will be relayed to other wolves.')
-        else:
-            pm(cli, wolf, "You are a \02{0}\02.".format(var.get_role(wolf)))  # !simple
-            
+
         
         pl = ps[:]
         pl.sort(key=lambda x: x.lower())
