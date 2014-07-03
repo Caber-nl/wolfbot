@@ -2059,6 +2059,28 @@ def transition_night(cli):
     for wolf in wolves:
         normal_notify = wolf in var.PLAYERS and var.PLAYERS[wolf]["cloak"] not in var.SIMPLE_NOTIFY
     
+        if normal_notify:
+            if wolf in var.ROLES["wolf"]:
+                pm(cli, wolf, ('You are a \u0002wolf\u0002. It is your job to kill all the '+
+                               'villagers. Use "kill <nick>" to kill a villager.'))
+            elif wolf in var.ROLES["traitor"]:
+                pm(cli, wolf, ('You are a \u0002traitor\u0002. You are exactly like a '+
+                               'villager and not even a seer can see your true identity. '+
+                               'Only detectives can. '))
+            else:
+                pm(cli, wolf, ('You are a \u0002werecrow\u0002. You are able to fly at night. '+
+                               'Use "kill <nick>" to kill a a villager. Alternatively, you can '+
+                               'use "observe <nick>" to check if someone is in bed or not. '+
+                               'Observing will prevent you from participating in a killing.'))
+            if len(wolves) > 1:
+                pm(cli, wolf, 'Also, if you PM me, your message will be relayed to other wolves.')
+        else:
+            pm(cli, wolf, "You are a \02{0}\02.".format(var.get_role(wolf))) # !simple
+    
+    
+    or wolf in wolves:
+        normal_notify = wolf in var.PLAYERS and var.PLAYERS[wolf]["cloak"] not in var.SIMPLE_NOTIFY
+    
             if wolf in var.ROLES["wolf"]:
                 pm(cli, wolf, ('You are a \u0002wolf\u0002. It is your job to kill all the '+
                                'villagers. Use "kill <nick>" to kill a villager.'))
